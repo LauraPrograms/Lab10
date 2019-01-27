@@ -24,7 +24,15 @@ namespace Lab10
                     try
                     {
                         radius = double.Parse(Console.ReadLine());
-                        runRadius = false;
+                        if (radius > 0)
+                        {
+                            runRadius = false;
+                        }
+                        else if (radius <= 0)
+                        {
+                            Console.WriteLine("Please enter a number greater than 0");
+                            runRadius = true;
+                        }
                     }
                     catch (FormatException e)
                     {
@@ -42,13 +50,13 @@ namespace Lab10
                 run = Continue();
 
             }
-            Console.WriteLine("You created {0} circle objects.", Circle.circleCount);
+            Console.WriteLine("Goodbye." +"\n"+"You created {0} circle objects.", Circle.circleCount);
         }
         public static bool Continue()
         {
             bool run;
             Console.WriteLine("Would you like to Continue (y/n): ");
-            string userAnswer = Console.ReadLine();
+            string userAnswer = Console.ReadLine().ToLower();
             if (userAnswer == "y")
             {
                 run = true;
